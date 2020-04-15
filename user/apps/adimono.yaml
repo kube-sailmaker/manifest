@@ -1,0 +1,47 @@
+#appname, probes
+name: adimono
+liveness_probe: /health
+readiness_probe: /health
+
+#version, artifact id will be added by deployer
+annotations:
+  lang: java
+  artifact_type: microservice
+  framework: springboot
+  #TODO ownership can be sourced from somewhere else
+  #TODO also need to distinguish app owner from release owner
+  owner: team1/person
+  email: team/person email
+
+resources:
+  - name: elasticsearch-user
+  - name: cassandra-a
+  - name: custom-env-group
+  
+#service account, env from resources, configmap from vault, file-password, auto injected  
+capabilities:
+  - name: prometheus
+  - name: vault
+  - name: file-password
+  - name: read-kubernetes
+
+mixins:
+ - equal-request-limit
+ - java-default
+
+template:
+- name: test
+  config:
+    cpu: c1
+    memory: m1
+    logging_level: DEBUG
+    
+- name: lab
+  config:
+    cpu: c1
+    memory: m2
+
+- name: prod
+  config:
+    cpu: c3
+    memory: m3

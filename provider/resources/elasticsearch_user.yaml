@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Resource
+metadata:
+  name: elasticsearch-user
+spec:
+  template:
+    - name: test
+      alias: tst_user
+      infrastructure:
+        - cluster1/test
+
+    - name: alpha
+      alias: user
+      infrastructure:
+        - cluster1/alpha
+
+    - name: prod
+      alias: user
+      infrastructure:
+        - cluster1/prod

@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Resource
+metadata:
+  name: elasticsearch-account
+spec:
+  template:
+    - name: test
+      alias: tst_account
+      infrastructure:
+        - cluster2/test
+
+    - name: alpha
+      alias: account
+      infrastructure:
+        - cluster2/alpha
+
+    - name: prod
+      alias: account
+      infrastructure:
+        - cluster2/prod

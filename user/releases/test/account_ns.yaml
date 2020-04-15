@@ -1,0 +1,6 @@
+apps:
+  - name: adimono
+    version: 2.0
+
+  - name: forcg
+    version: 1.0
